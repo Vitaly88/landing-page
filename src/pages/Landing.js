@@ -5,6 +5,7 @@ import MainLogo from "../components/MainLogo";
 import MainHeadline from "../components/MainHeadline";
 import Section from "../components/Section";
 import Divider from "../components/Divider";
+import ButtonLink from "../components/ButtonLink";
 
 function Landing() {
   return (
@@ -15,7 +16,7 @@ function Landing() {
         <MainHeadline>Bella Venezia!</MainHeadline>
       </Fullscreen>
       <Section>
-        <h2>Venezia e una citta piu bella</h2>
+        <h2>Venezia e una città più bella</h2>
         <Divider />
         React 16.8
         <br />
@@ -23,9 +24,13 @@ function Landing() {
         <br />
         React Router
         <br />
-        PropTypes and a lot of 🍌
+        PropTypes and a lot of
         <br />
-        <button> 🍌About Me</button>
+        <span role="img" aria-label="Banana">
+          🍌
+        </span>
+        <br />
+        <ButtonLink onClick={() => console.log("clicked")}>About Me</ButtonLink>
       </Section>
     </>
   );
