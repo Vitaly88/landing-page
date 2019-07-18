@@ -41,12 +41,22 @@ function PasteForm() {
     event.preventDefault();
     console.log(title, text);
   }
+
+  function handleKeyDown(event) {
+    //prevent form to submit from Enter
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      //console.log(event.keyCode);
+    }
+  }
   return (
     <Form onSubmit={handleSubmit}>
       <Input
         placeholder="Give it a title"
         value={title}
         onChange={handleTitleChange}
+        required={true}
+        onKeyDown={handleKeyDown}
       />
       <br />
       <Textarea
@@ -56,7 +66,7 @@ function PasteForm() {
         onChange={handleTextChange}
       />
       <br />
-      <ButtonLink>Create Paste</ButtonLink>
+      <ButtonLink>Submit</ButtonLink>
     </Form>
   );
 }
