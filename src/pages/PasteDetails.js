@@ -19,30 +19,31 @@ import { getPaste } from "../utils/pasteApi";
 
 function PasteDetails({ match }) {
   const [paste, setPaste] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
   const { id } = match.params;
 
   React.useEffect(() => {
     getPaste(id)
       .then(paste => setPaste(paste))
+      .then(() => setLoading(false))
       .catch(error => {
         console.error(error);
+        setLoading(false);
       });
   }, [id]); //returns id repeatedly
 
-  //   if (!paste) {
-  //     return <div>Not found</div>;
-  //   }
   console.log(paste);
   return (
     <Section>
-      {!paste && <div>Paste {id} Not found</div>}
-      {paste && (
+      {!loading && !paste && <div>Paste {id} Not found</div>}
+      {!loading && paste && (
         <div>
           <Subtitle>{paste.title}</Subtitle>
           <Divider />
           <Content>{paste.text}</Content>
         </div>
       )}
+      {loading && <div>Loading...</div>}
     </Section>
   );
 }
