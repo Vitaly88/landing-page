@@ -11,13 +11,22 @@ function App() {
     <>
       <GlobalStyle />
       <Router>
-        <Switch>
-          <Route path="/" exact component={Landing} />
-          <Route path="/about" component={About} />
-          <Route component={NotFound} />
-        </Switch>
+        <div
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column"
+          }}
+        >
+          <Switch>
+            <Route path="/" exact component={Landing} />
+            <Route path="/about" component={About} />
+            <Route component={NotFound} />
+          </Switch>
+          <div style={{ flexGrow: 1 }} />
+          <Footer>Made with Love</Footer>
+        </div>
       </Router>
-      <Footer>Made with Love</Footer>
     </>
   );
 }

@@ -6,6 +6,7 @@ import MainHeadline from "../components/MainHeadline";
 import Section from "../components/Section";
 import Divider from "../components/Divider";
 import ButtonLink from "../components/ButtonLink";
+import ScrollDown from "../components/ScrollDown";
 
 function Landing() {
   return (
@@ -14,8 +15,16 @@ function Landing() {
         <BackgroundImage src="https://cdn.pixabay.com/photo/2019/06/24/10/32/venice-4295681_1280.jpg" />
         <MainLogo />
         <MainHeadline>Bella Venezia!</MainHeadline>
+        <ScrollDown href="#info">
+          SCROLL DOWN
+          <div className="arrow">
+            <span />
+            <span />
+            <span />
+          </div>
+        </ScrollDown>
       </Fullscreen>
-      <Section>
+      <Section id="info">
         <h2>Venezia e una città più bella</h2>
         <Divider />
         React 16.8
@@ -30,7 +39,7 @@ function Landing() {
           🍌
         </span>
         <br />
-        <ButtonLink onClick={() => console.log("clicked")}>About Me</ButtonLink>
+        <ButtonLink to="/about">About Me </ButtonLink>
       </Section>
     </>
   );
