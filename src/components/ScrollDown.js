@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { fadeIn } from "../utils/animations";
 
-const ScrollDown = styled.div`
+const ScrollDown = styled.a`
   font-size: 10px;
   text-decoration: none;
   color: white;

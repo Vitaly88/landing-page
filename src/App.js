@@ -4,6 +4,7 @@ import Landing from "./pages/Landing";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
+import Paste from "./pages/Paste";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Landing} />
             <Route path="/about" component={About} />
+            <Route path="/paste" component={Paste} />
             <Route component={NotFound} />
           </Switch>
           <div style={{ flexGrow: 1 }} />
