@@ -1,6 +1,8 @@
 import React from "react";
-import ButtonLink from "../components/ButtonLink";
+//import ButtonLink from "../components/ButtonLink";
 import styled from "styled-components";
+import { postPaste } from "../utils/pasteApi";
+import { Redirect } from "react-router-dom";
 
 const Form = styled.form``;
 
@@ -26,6 +28,8 @@ const Textarea = styled.textarea`
 function PasteForm() {
   const [title, setTitle] = React.useState("");
   const [text, setText] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [paste, setPaste] = React.useState(null);
 
   function handleTitleChange(event) {
     console.log(event.target.value);
@@ -39,6 +43,18 @@ function PasteForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    setLoading(true);
+
+    const newPaste = {
+      title, //title: title,
+      text //text: text
+    };
+
+    postPaste(newPaste).then(paste => {
+      setPaste(paste);
+    });
+
     console.log(title, text);
   }
 
@@ -48,6 +64,10 @@ function PasteForm() {
       event.preventDefault();
       //console.log(event.keyCode);
     }
+  }
+
+  if (paste) {
+    return <Redirect to={`/paste/${paste.id}`} />;
   }
   return (
     <Form onSubmit={handleSubmit}>
@@ -64,9 +84,13 @@ function PasteForm() {
         placeholder="Give your comment"
         value={text}
         onChange={handleTextChange}
+        required
       />
       <br />
-      <ButtonLink>Submit</ButtonLink>
+      {/* Button is disabled when the info is loading */}
+      <button disabled={loading}>
+        {loading ? "Loading ..." : "Create Paste"}
+      </button>
     </Form>
   );
 }

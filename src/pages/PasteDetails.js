@@ -1,21 +1,10 @@
 import React from "react";
 import Section from "../components/Section";
-//import Headline from "../components/Headline";
 import Subtitle from "../components/Subtitle";
 import Divider from "../components/Divider";
 import Content from "../components/Content";
 import { getPaste } from "../utils/pasteApi";
-
-// const tempData = {
-//   1: {
-//     title: "Some Paste Title",
-//     text: "Some text input"
-//   },
-//   2: {
-//     title: "Another Paste Title",
-//     text: "Some text input\nAnd another text"
-//   }
-// };
+import ButtonLink from "../components/ButtonLink";
 
 function PasteDetails({ match }) {
   const [paste, setPaste] = React.useState(null);
@@ -41,6 +30,8 @@ function PasteDetails({ match }) {
           <Subtitle>{paste.title}</Subtitle>
           <Divider />
           <Content>{paste.text}</Content>
+          <br />
+          <ButtonLink to="/paste">Back</ButtonLink>
         </div>
       )}
       {loading && <div>Loading...</div>}
